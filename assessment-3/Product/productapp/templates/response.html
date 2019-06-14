@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% load static %}  
+<style>
+
+div {
+  margin: 15px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+#output{
+  float :right; 
+}
+
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="http://127.0.0.1:8000/create/">Create</a></li>
+  <li><a href="http://127.0.0.1:8000/view/">View</a></li>
+  <div>Supplier Implementation</div>
+</ul>
+<br>
+<h2 id="output"><b>{{form}}</b></h2>
+<img src="{% static '/supplier.jpg' %}" alt="supplier" height="335px" width="595px"/> 
+</body>
+</html>

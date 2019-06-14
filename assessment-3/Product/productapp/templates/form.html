@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}  
+
+<style>
+
+div {
+  margin: 15px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="http://127.0.0.1:8000/create/">Create</a></li>
+  <li><a href="http://127.0.0.1:8000/view/">View</a></li>
+  <div>Supplier Implementation</div>
+</ul>
+
+<br>
+<form method="POST" class="post-form" enctype="multipart/form-data" style="
+   float :right;">  
+        {% csrf_token %}
+        
+    <h3><b>Supplier Application Form</b></h3>     
+    {% for field in client %}
+      <p>
+        {{ field.label_tag }}<br>
+          {{ field }}
+
+        {% if field.help_text %}
+
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+      </p>
+    {% endfor %}
+
+
+    {% for field in product %}
+      <p>
+        {{ field.label_tag }}<br>
+          {{ field }}
+
+        {% if field.help_text %}
+
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+      </p>
+    {% endfor %}
+
+
+    {% for field in router %}
+      <p>
+        {{ field.label_tag }}<br>
+          {{ field }}
+
+        {% if field.help_text %}
+
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+      </p>
+    {% endfor %}
+
+
+    {% for field in hub %}
+      <p>
+        {{ field.label_tag }}<br>
+          {{ field }}
+
+        {% if field.help_text %}
+
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+      </p>
+    {% endfor %}
+
+<!--     {{client.as_p}}
+    {{product.as_p}}
+    {{router.as_p}}
+    {{hub.as_p}} -->
+
+		<input type="submit" value="Submit">
+</form> 
+<img src="{% static '/supplier.jpg' %}" alt="supplier" height="335px" width="595px"/> 
+</body>
+</html>

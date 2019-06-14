@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 {% load static %}  
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link href="https://src/selectstyle.css" rel="stylesheet"> -->
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<!-- <script src="https://src/selectstyle.js"></script> -->
+<style>
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+
+p {
+	margin: 15px;
+	color: white;
+
+}
+
+#clientname{
+	float :right;	
+}
+
+#client_id{
+	float :right;
+	/*padding-left: 450px;*/
+}
+
+
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="http://127.0.0.1:8000/create/">Create</a></li>
+  <li><a href="http://127.0.0.1:8000/view/">View</a></li>
+  <p>Supplier Implementation</p>
+</ul>
+	<br>
+	<br>
+<!-- 	{% for client in client_list %}
+		{{client.client_name}}
+
+	{% endfor %} -->
+
+<form name = "form" method="POST" id ="clientname"> 
+	<!-- {{client_list}} -->
+	<select id="client">
+		
+
+		{% for client in client_list %}   
+
+    		<option value="{{client.id}}">{{client.client_name}}</option>     
+  		{% endfor %}
+    	
+	</select>  
+	<input type="submit" value="Submit">
+
+</form>
+
+<div id="client_id"><b></b></div>
+<script type="text/javascript">
+	  $(document).on('submit','#clientname',function(event){
+      event.preventDefault();
+      client = $('#client').val();
+
+	$.ajax({
+	  url : 'http://127.0.0.1:8000/fetchData/',
+	  type : "POST",
+	  csrfmiddlewaretoken: '{{ csrf_token }}',
+	  data: {
+	      'client': client ,
+	  },
+	  
+	  success : function(data) {
+	     $('#client_id').html(data);
+
+	  },  
+	  error: function(data) {
+	    alert('An error occurred...');  
+	    
+	  }
+	});
+});    
+</script>
+
+<img src="{% static '/supplier.jpg' %}" alt="supplier" height="335px" width="400px"/> 
+</body>
+</html>

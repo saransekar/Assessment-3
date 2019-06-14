@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>	
+</head>
+<body>
+	<br><h3><b>Supplier Implementation Details</b></h3>
+		Client Name : {{client.client_name}}<br><br>
+		Contact Name: {{client.contact_name}}<br><br>
+		Client Code: {{client.client_code}}<br><br>
+		Mobile Number: {{client.mobile_number}}<br><br>
+
+		{% for product in product_implement%}
+			Product Implementation: {{product}}<br><br>
+		{% endfor %}
+
+		{% for router_ip in router%}
+			Router Ip: {{router_ip}}<br><br>
+		{% endfor %}
+
+		{% for hub_ip in hub%}
+			Hub Ip: {{hub_ip}}<br><br>
+		{% endfor %}
+
+	<!-- {% for client in clients%}
+		{{client.client_name}}
+		{{client.contact_name}}
+		{{client.client_code}}
+		{{client.mobile_number}}
+	{% endfor %}
+ -->
+ 
+	<!-- {{client_list}} -->
+	    	
+</form>
+</body>
+</html>
