@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>	
-</head>
-<body>
-	<br><h3><b>Supplier Implementation Details</b></h3>
-		Client Name : {{client.client_name}}<br><br>
-		Contact Name: {{client.contact_name}}<br><br>
-		Client Code: {{client.client_code}}<br><br>
-		Mobile Number: {{client.mobile_number}}<br><br>
+<body>	
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 form-page mb-3">
+			<h3><b>Supplier Implementation Details</b></h3><br>
+			<a data-toggle="modal" data-target="#mymodal">
+				<h5> <i class="fa fa-user" id="icone_grande" style="font-size:20px"></i> &nbsp Client Name : {{client.client_name}}</h5><br>
 
-		{% for product in product_implement%}
-			Product Implementation: {{product}}<br><br>
-		{% endfor %}
+			<a data-toggle="modal" data-target="#mymodal">
+           		<h5> <i class="fa fa-phone" id="icone_grande" style="font-size:20px"></i> &nbsp Contact Name: {{client.contact_name}}</h5><br>
 
-		{% for router_ip in router%}
-			Router Ip: {{router_ip}}<br><br>
-		{% endfor %}
+			<a data-toggle="modal" data-target="#mymodal">
+				<h5> <i class="fa fa-address-card-o" id="icone_grande" style="font-size:20px"></i> &nbsp Client Code: {{client.client_code}}</h5><br>
 
-		{% for hub_ip in hub%}
-			Hub Ip: {{hub_ip}}<br><br>
-		{% endfor %}
+			<a data-toggle="modal" data-target="#mymodal">
+				<h5> <i class="fa fa-volume-control-phone" style="font-size:20px"></i> &nbsp Mobile Number: {{client.mobile_number}}</h5><br>
 
-	<!-- {% for client in clients%}
-		{{client.client_name}}
-		{{client.contact_name}}
-		{{client.client_code}}
-		{{client.mobile_number}}
-	{% endfor %}
- -->
- 
-	<!-- {{client_list}} -->
-	    	
+      		{% for product in product_implement%}	
+				<a data-toggle="modal" data-target="#mymodal">
+					<h5> <i class="fa fa-calendar" id="icone_grande" style="font-size:20px"></i> &nbsp Product Implementation: {{product}}</h5><br>
+      		{% endfor %}	
+
+			{% for router_ip in router%}	
+				<a data-toggle="modal" data-target="#mymodal">
+					<h5> <i class="fa fa-wifi" id="icone_grande" style="font-size:20px"></i> &nbsp Router Ip: {{router_ip}}</h5><br>
+      		{% endfor %}
+
+			{% for hub_ip in hub%}	
+				<a data-toggle="modal" data-target="#mymodal">
+           			<h5> <i class="fa fa-wifi" id="icone_grande" style="font-size:20px"></i> &nbsp Hub Ip: {{hub_ip}}</h5> 		
+			{% endfor %}		
+
+		</div>	
+	</div>	
+</div>	    	
 </form>
 </body>
-</html>
+
+

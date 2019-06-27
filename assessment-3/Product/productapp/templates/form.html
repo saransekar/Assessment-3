@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  {% load static %}  
+
+{% extends "base.html" %}
+{% block content %}
+
+  {% load static %} 
 
 <style>
 
 div {
+  margin: 10px;
+  color: #000000;
+}
+
+h6 {
   margin: 15px;
   color: white;
 }
@@ -35,6 +44,19 @@ li a:hover {
 }
 
 
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #000000;;
+    border-color: #000000;;
+}
+
 </style>
 </head>
 <body>
@@ -42,93 +64,100 @@ li a:hover {
 <ul>
   <li><a class="active" href="http://127.0.0.1:8000/create/">Create</a></li>
   <li><a href="http://127.0.0.1:8000/view/">View</a></li>
-  <div>Supplier Implementation</div>
+  <h6>Supplier Implementation</h6>
 </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 form-page mb-3">
+            <form method="POST" role="form">
+              {% for field in client %}
+                
+                <div class="fieldWrapper form-group" aria-required="true">
+                    <label for=""> {{ field.label_tag }}</label><span class="required">*</span>
+                    {{ field }}
 
-<br>
-<form method="POST" class="post-form" enctype="multipart/form-data" style="
-   float :right;">  
-        {% csrf_token %}
-        
-    <h3><b>Supplier Application Form</b></h3>     
-    {% for field in client %}
-      <p>
-        {{ field.label_tag }}<br>
-          {{ field }}
+                    
+                    {% if field.help_text %}
 
-        {% if field.help_text %}
+                      <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
 
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                      </p>
+                    
+                </div>
+              {% endfor %} 
 
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
+              {% for field in product %}
+                
+                <div class="fieldWrapper form-group" aria-required="true">
+                    <label for=""> {{ field.label_tag }}</label><span class="required">*</span><br>
 
-      </p>
-    {% endfor %}
+                    <input type="date" name="installation_date" required="" id="id_installation_date" class="form-control">
+                    {% if field.help_text %}
 
+                      <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
 
-    {% for field in product %}
-      <p>
-        {{ field.label_tag }}<br>
-          {{ field }}
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                      </p>
+                    
+                </div>
+              {% endfor %}
 
-        {% if field.help_text %}
+              {% for field in router %}
+                
+                <div class="fieldWrapper form-group" aria-required="true">
+                    <label for=""> {{ field.label_tag }}</label><span class="required">*</span>
+                    {{ field }}
 
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
+                    
+                    {% if field.help_text %}
 
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
+                      <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
 
-      </p>
-    {% endfor %}
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                      </p>
+                    
+                </div>
+              {% endfor %}
 
+              {% for field in hub %}
+                
+                <div class="fieldWrapper form-group" aria-required="true">
+                    <label for=""> {{ field.label_tag }}</label><span class="required">*</span>
+                    {{ field }}
 
-    {% for field in router %}
-      <p>
-        {{ field.label_tag }}<br>
-          {{ field }}
+                    
+                    {% if field.help_text %}
 
-        {% if field.help_text %}
+                      <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
 
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-
-      </p>
-    {% endfor %}
-
-
-    {% for field in hub %}
-      <p>
-        {{ field.label_tag }}<br>
-          {{ field }}
-
-        {% if field.help_text %}
-
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-
-      </p>
-    {% endfor %}
-
-<!--     {{client.as_p}}
-    {{product.as_p}}
-    {{router.as_p}}
-    {{hub.as_p}} -->
-
-		<input type="submit" value="Submit">
-</form> 
-<img src="{% static '/supplier.jpg' %}" alt="supplier" height="335px" width="595px"/> 
+                    {% for error in field.errors %}
+                      <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                      </p>
+                    
+                </div>
+              {% endfor %} 
+      
+                
+    <input type="submit" class="btn btn-primary mb-2" value="Submit" />
+            </form>
+        </div>
+  <div class="col-md-4">
+    <!-- other column -->
+  </div>
+</div>
 </body>
+
+{% endblock %}
 </html>

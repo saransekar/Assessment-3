@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
+from datetime import date
 
 # Create your models here.
 class Client(models.Model):
@@ -10,7 +11,7 @@ class Client(models.Model):
 	client_code = models.CharField(max_length=15,unique=True)
 	mobile_number = models.CharField(max_length=10)
 
-	def __str__(self):
+	def __str__(self):	
 		return str(self.client_name)
 
 	class Meta:
@@ -19,7 +20,7 @@ class Client(models.Model):
 
 class ProductImplementation(models.Model):
 	client = models.ForeignKey(Client, on_delete=models.CASCADE,null=True)
-	installation_date = models.DateField()
+	installation_date = models.DateField(null=True, blank=True)
 
 	def __str__(self):
 		return str(self.installation_date)

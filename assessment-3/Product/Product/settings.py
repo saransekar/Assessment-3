@@ -25,7 +25,7 @@ SECRET_KEY = '%fd*uz%r-7sxcf)8ib!h0rmus7j)mdh7i(v=!p@eqqjt12kq23'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'productapp',
+    
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+# DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

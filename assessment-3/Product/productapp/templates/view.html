@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	 {% load static %}  
+	 {% extends "base.html" %}
+	{% block content %}
+
+  	{% load static %} 
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <link href="https://src/selectstyle.css" rel="stylesheet"> -->
-	<script src="https://code.jquery.com/jquery.min.js"></script>
-	<!-- <script src="https://src/selectstyle.js"></script> -->
+
 <style>
 
 ul {
@@ -40,14 +41,41 @@ p {
 
 }
 
-#clientname{
-	float :right;	
+a:hover {
+    color: white;
+    text-decoration: none;
 }
 
-#client_id{
-	float :right;
-	/*padding-left: 450px;*/
+
+.btn-primary {
+    color: #fff;
+    background-color: #000000;;
+    border-color: #000000;
+    /*float: right;*/
+    margin-top: 10px;
 }
+
+
+
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
 
 
 </style>
@@ -59,27 +87,26 @@ p {
   <li><a href="http://127.0.0.1:8000/view/">View</a></li>
   <p>Supplier Implementation</p>
 </ul>
-	<br>
-	<br>
-<!-- 	{% for client in client_list %}
-		{{client.client_name}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 form-page mb-3">
 
-	{% endfor %} -->
+			<form name = "form" method="POST" id ="clientname"> 
+				<select class="btn btn-default dropdown-toggle" id="client" >
+					
+					{% for client in client_list %}   
 
-<form name = "form" method="POST" id ="clientname"> 
-	<!-- {{client_list}} -->
-	<select id="client">
-		
+			    		<option value="{{client.id}}">{{client.client_name}}</option>     
+			  		{% endfor %}
+			    	
+				</select> 
+				<input type="submit" class="btn btn-primary mb-2" value="Submit">
 
-		{% for client in client_list %}   
+			</form>
+		</div>
+	</div>		
+</div>
 
-    		<option value="{{client.id}}">{{client.client_name}}</option>     
-  		{% endfor %}
-    	
-	</select>  
-	<input type="submit" value="Submit">
-
-</form>
 
 <div id="client_id"><b></b></div>
 <script type="text/javascript">
@@ -106,7 +133,6 @@ p {
 	});
 });    
 </script>
-
-<img src="{% static '/supplier.jpg' %}" alt="supplier" height="335px" width="400px"/> 
+{% endblock %}
 </body>
 </html>
