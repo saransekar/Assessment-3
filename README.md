@@ -24,7 +24,7 @@ To create a portal for suppliers that performs
 
 ## Technologies used
 
-      Python - v3.5.3
+      Python - v3.5.2
       
       Django - v2.2
       
@@ -38,4 +38,4 @@ To create a portal for suppliers that performs
       
       jQuery
       
-      
+      Ajax
