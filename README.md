@@ -1,6 +1,6 @@
-# SUPPLIER INFORMATION
+## SUPPLIER INFORMATION
 
-## Goal
+### Goal
 
 To create a portal for suppliers that performs 
   
