@@ -22,7 +22,7 @@ To create a portal for suppliers that performs
     
 2. Viewing the supplier information by choosing the client in the list of clients created
 
-## Technologies used
+### Technologies used
 
       Python - v3.5.2
       
